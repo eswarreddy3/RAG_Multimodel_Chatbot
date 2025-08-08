@@ -1,0 +1,15 @@
+python-dotenv
+langchain_openai
+langchain
+openai
+chromadb
+faiss-cpu
+tqdm
+pdfplumber
+python-multipart
+langchain_groq
+langchain-community
+pypdf
+streamlit
+webvtt-py
+unstructured
