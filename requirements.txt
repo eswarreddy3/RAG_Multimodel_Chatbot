@@ -13,3 +13,4 @@ pypdf
 streamlit
 webvtt-py
 unstructured
+yt_dlp
