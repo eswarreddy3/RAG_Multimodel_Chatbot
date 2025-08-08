@@ -14,3 +14,4 @@ streamlit
 webvtt-py
 unstructured
 yt_dlp
+pysqlite3-binary
