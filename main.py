@@ -1,3 +1,10 @@
+try:
+import("pysqlite3")
+import sys
+sys.modules["sqlite3"] = sys.modules.pop("pysqlite3")
+except Exception:
+pass
+
 import os
 import tempfile
 import streamlit as st
