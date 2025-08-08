@@ -23,7 +23,8 @@ from langchain.chains import LLMChain
 
 # Load API Key
 load_dotenv()
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+# OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 
 # Streamlit App Title
 st.title("🤖 RAG ChatBot")
