@@ -132,13 +132,15 @@ if submit:
                 splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
                 chunks = splitter.split_documents(docs)
 
-                db = Chroma.from_documents(chunks, embeddings)
-                retriever = db.as_retriever()
+                # ✅ Fresh Chroma store for each upload
+                with tempfile.TemporaryDirectory() as temp_dir:
+                    db = Chroma.from_documents(chunks, embeddings, persist_directory=temp_dir)
+                    retriever = db.as_retriever()
 
-                combine_docs_chain = create_stuff_documents_chain(llm, prompt)
-                rag_chain = create_retrieval_chain(retriever, combine_docs_chain)
-
-                result = rag_chain.invoke({"input": user_query})
+                    combine_docs_chain = create_stuff_documents_chain(llm, prompt)
+                    rag_chain = create_retrieval_chain(retriever, combine_docs_chain)
+                    result = rag_chain.invoke({"input": user_query})
+                    
                 st.markdown("### ✅ Answer from PDF")
                 st.write(result["answer"])
 
